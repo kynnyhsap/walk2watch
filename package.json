@@ -1,0 +1,22 @@
+{
+  "name": "walk2watch",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kynnyhsap/walk2watch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kynnyhsap/walk2watch/issues"
+  },
+  "homepage": "https://github.com/kynnyhsap/walk2watch#readme",
+  "dependencies": {
+    "@netlify/functions": "^1.6.0"
+  }
+}

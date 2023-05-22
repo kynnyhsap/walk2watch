@@ -1,5 +1,7 @@
-exports.handler = async function (event, context) {
-  const body = JSON.parse(event.body)
+import { Handler } from '@netlify/functions'
+
+const handler: Handler = async (event, context) => {
+  const body = JSON.parse(event.body ?? '{}')
 
   const startDates = body.steps.startDates.split("\n")
   const endDates = body.steps.endDates.split("\n")
@@ -20,3 +22,5 @@ exports.handler = async function (event, context) {
     body: JSON.stringify({ steps }),
   };
 };
+
+export { handler }
