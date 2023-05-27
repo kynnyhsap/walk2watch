@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Time Remaining</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        font-family: Verdana, sans-serif;
+        color: #fff;
+      }
+
+      #timeLeft {
+        font-size: 6em;
+        animation: animate 1s linear forwards;
+      }
+
+      @keyframes animate {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="timeLeft"><div>
+
+    <script>
+      function msToTime(duration) {
+        let seconds = parseInt((duration / 1000) % 60)
+        let minutes = parseInt((duration / (1000 * 60)) % 60)
+        let hours = parseInt((duration / (1000 * 60 * 60)) % 24)
+
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        return hours + ":" + minutes + ":" + seconds;
+      }
+
+      function getTimeLeft() {
+        fetch('https://walk2watch.netlify.app/.netlify/functions/watch-time')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('timeLeft').innerText = msToTime(data.watchtimeLeft) 
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+
+      getTimeLeft();
+      setInterval(getTimeLeft, 5000);
+    </script>
+  </body>
+</html>
+
