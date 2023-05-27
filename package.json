@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kynnyhsap/walk2watch#readme",
   "dependencies": {
-    "@netlify/functions": "^1.6.0"
+    "@netlify/functions": "^1.6.0",
+    "@xata.io/client": "^0.24.0"
   }
 }

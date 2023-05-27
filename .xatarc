@@ -1,3 +1,6 @@
 {
-  "databaseURL": "https://Andriy-Pashynnyk-s-workspace-0j5g5v.eu-west-1.xata.sh/db/walk2watch"
+  "databaseURL": "https://Andriy-Pashynnyk-s-workspace-0j5g5v.eu-west-1.xata.sh/db/walk2watch",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
 }
