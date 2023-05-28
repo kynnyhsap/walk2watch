@@ -16,7 +16,7 @@ const tables = [
         type: "datetime",
         notNull: true,
         defaultValue: "now",
-      }
+      },
     ],
   },
   {
