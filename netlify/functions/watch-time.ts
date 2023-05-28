@@ -29,6 +29,13 @@ export const handler: Handler = async (event) => {
   const watchtimeLeft = calcWatchtimeLeft(totalSteps, totalWatchtime);
 
   if (event.httpMethod === "POST") {
+    if (event.headers["X-Secret"] !== process.env.SECRET) {
+      return {
+        statusCode: 401,
+        body: "Unauthorized",
+      };
+    }
+
     const body = JSON.parse(event.body ?? "{}") as {
       ms: number;
       datetime: string;

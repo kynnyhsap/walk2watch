@@ -2,6 +2,13 @@ import { Handler } from "@netlify/functions";
 import { getXataClient } from "../../src/xata";
 
 const handler: Handler = async (event) => {
+  if (event.headers["X-Secret"] !== process.env.SECRET) {
+    return {
+      statusCode: 401,
+      body: "Unauthorized",
+    };
+  }
+
   const body = JSON.parse(event.body ?? "{}");
 
   const dates: string[] = body.steps.dates.split("\n");

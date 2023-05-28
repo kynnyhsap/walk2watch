@@ -1,8 +1,8 @@
+const SECRET = ""; // only I know this =)
 const TIME_CHUNCK = 5000;
 const URI = "https://walk2watch.netlify.app";
 const WATCH_TIME_URI = `${URI}/.netlify/functions/watch-time`;
 const YOUTUBE_WATCH_URI = "https://www.youtube.com/watch";
-
 let intervalId;
 
 function redirect() {
@@ -39,7 +39,10 @@ async function startWatching() {
   intervalId = setInterval(async () => {
     const { watchtimeLeft } = await fetch(WATCH_TIME_URI, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Secret": SECRET,
+      },
       body: JSON.stringify({
         ms: TIME_CHUNCK,
         datetime: new Date(),
@@ -49,7 +52,7 @@ async function startWatching() {
     console.log("Watchtime left", watchtimeLeft);
 
     if (watchtimeLeft === 0) {
-      stopWatching(); 
+      stopWatching();
       redirect();
     }
   }, TIME_CHUNCK);

@@ -19,5 +19,8 @@
   "dependencies": {
     "@netlify/functions": "^1.6.0",
     "@xata.io/client": "^0.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.5"
   }
 }
